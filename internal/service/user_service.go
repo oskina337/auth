@@ -8,18 +8,19 @@ import (
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
+// Server отвечает за обработку пользовательских запросов.
 type Server struct {
 	pb.UnimplementedUserAPIV1Server
 }
 
-func (s *Server) Create(ctx context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
+func (s *Server) Create(_ context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
 
 	fmt.Printf("Create: %+v\n", req)
 	return &pb.CreateResponse{Id: 1}, nil
 
 }
 
-func (s *Server) Get(ctx context.Context, in *pb.GetRequest) (*pb.GetResponse, error) {
+func (s *Server) Get(_ context.Context, in *pb.GetRequest) (*pb.GetResponse, error) {
 	fmt.Printf("Get: %+v\n", in)
 	return &pb.GetResponse{
 		Id:    in.Id,
@@ -29,12 +30,12 @@ func (s *Server) Get(ctx context.Context, in *pb.GetRequest) (*pb.GetResponse, e
 	}, nil
 }
 
-func (s *Server) Update(ctx context.Context, in *pb.UpdateRequest) (*emptypb.Empty, error) {
+func (s *Server) Update(_ context.Context, in *pb.UpdateRequest) (*emptypb.Empty, error) {
 	fmt.Printf("Update: %+v\n", in)
 	return &emptypb.Empty{}, nil
 }
 
-func (s *Server) Delete(ctx context.Context, in *pb.DeleteRequest) (*emptypb.Empty, error) {
+func (s *Server) Delete(_ context.Context, in *pb.DeleteRequest) (*emptypb.Empty, error) {
 	fmt.Printf("Delete: %+v\n", in)
 	return &emptypb.Empty{}, nil
 }
