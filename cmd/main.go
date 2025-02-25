@@ -5,10 +5,6 @@ import (
 	pb "auth/pkg/userAPI_v1"
 	"fmt"
 	"log"
-	"net"
-
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 )
 
 const grpcPort = 50051
